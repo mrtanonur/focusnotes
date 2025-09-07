@@ -53,3 +53,4 @@ ios/Runner/GoogleService-Info.plist
 ios/Runner/GoogleMapsAPIKey.xcconfig
 ios/Runner/AppDelegate.swift
 firebase.json
+firebase_options.dart
