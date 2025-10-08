@@ -32,7 +32,6 @@ class AuthProvider extends ChangeNotifier {
       (String errorMessage) {
         error = errorMessage;
         status = AuthStatus.failure;
-        print("failure");
       },
       (UserCredential userCredential) async {
         final User user = userCredential.user!;
@@ -44,7 +43,6 @@ class AuthProvider extends ChangeNotifier {
         );
         userData = userModel;
         status = AuthStatus.verificationProcess;
-        print("credential");
       },
     );
     notifyListeners();
@@ -83,7 +81,6 @@ class AuthProvider extends ChangeNotifier {
       },
       (UserModel userModel) {
         userData = userModel;
-        print(userData!.email);
       },
     );
   }
@@ -92,12 +89,10 @@ class AuthProvider extends ChangeNotifier {
     final response = await _authService.signIn(email, password);
     response.fold(
       (String errorMessage) {
-        print(errorMessage);
         error = errorMessage;
         status = AuthStatus.failure;
       },
       (User? user) {
-        print(user);
         if (user != null) {
           if (user.emailVerified) {
             status = AuthStatus.signIn;
@@ -112,33 +107,33 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  // Future googleSignIn() async {
-  //   final response = await _authService.googleSignIn();
-  //   response.fold(
-  //     (String errorMessage) {
-  //       error = errorMessage;
-  //       status = AuthStatus.failure;
-  //     },
-  //     (_) {
-  //       status = AuthStatus.signIn;
-  //     },
-  //   );
-  // }
+  Future googleSignIn() async {
+    final response = await _authService.googleSignIn();
+    response.fold(
+      (String errorMessage) {
+        error = errorMessage;
+        status = AuthStatus.failure;
+      },
+      (_) {
+        status = AuthStatus.signIn;
+      },
+    );
+  }
 
-  // // apple sign in
-  // Future appleSignIn() async {
-  //   final response = await _authService.appleSignIn();
-  //   response.fold(
-  //     (String errorMessage) {
-  //       error = errorMessage;
-  //       status = AuthStatus.failure;
-  //     },
-  //     (User? user) {
-  //       status = AuthStatus.signIn;
-  //     },
-  //   );
-  //   notifyListeners();
-  // }
+  // apple sign in
+  Future appleSignIn() async {
+    final response = await _authService.appleSignIn();
+    response.fold(
+      (String errorMessage) {
+        error = errorMessage;
+        status = AuthStatus.failure;
+      },
+      (User? user) {
+        status = AuthStatus.signIn;
+      },
+    );
+    notifyListeners();
+  }
 
   Future sendPasswordResetLink(String email) async {
     final response = await _authService.sendPasswordResetLink(email);

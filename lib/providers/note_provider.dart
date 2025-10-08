@@ -44,11 +44,6 @@ class NoteProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void readAll() {
-    final List<NoteModel?> localNotes = NoteLocalDataSource.readAll();
-    notes = localNotes;
-  }
-
   Future getNotes() async {
     final response = await _firestoreService.getNotes();
     response.fold(
@@ -58,7 +53,6 @@ class NoteProvider extends ChangeNotifier {
         } else {
           status = NoteStatus.loaded;
           notes = NoteLocalDataSource.readAll();
-          print("hive success");
         }
       },
       (List<NoteModel?> fetchedNotes) {
@@ -67,8 +61,6 @@ class NoteProvider extends ChangeNotifier {
         } else {
           notes = fetchedNotes;
           status = NoteStatus.loaded;
-          print(notes.first);
-          print("firebase success");
         }
       },
     );
