@@ -31,7 +31,8 @@ class _FocusNotesModalBottomSheetState
     return Form(
       key: _globalKey,
       autovalidateMode: AutovalidateMode.onUnfocus,
-      child: Padding(
+      child: Container(
+        margin: EdgeInsets.only(bottom: SizeConstants.s24),
         padding: const EdgeInsets.all(SizeConstants.s24),
         child: SingleChildScrollView(
           child: Column(

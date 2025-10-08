@@ -27,7 +27,7 @@ class FocusnotesAppBar extends StatelessWidget implements PreferredSizeWidget {
               )
             : null,
         automaticallyImplyLeading: false,
-        title: Text(title),
+        title: Center(child: Text(title)),
         backgroundColor: color,
       );
     } else {
@@ -41,7 +41,7 @@ class FocusnotesAppBar extends StatelessWidget implements PreferredSizeWidget {
               )
             : null,
         automaticallyImplyLeading: false,
-        middle: Text(title),
+        middle: Center(child: Text(title)),
         backgroundColor: color,
       );
     }

@@ -30,6 +30,9 @@ class _FocusNotesTextFormfieldState extends State<FocusNotesTextFormfield> {
         vertical: SizeConstants.s12,
       ),
       child: TextFormField(
+        style: const TextStyle(
+          color: Colors.black,
+        ), // styling the color of input which better be always black
         controller: widget.controller,
         obscureText: isShownPassword ? false : widget.obscureText,
         validator: widget.validator,
@@ -58,8 +61,14 @@ class _FocusNotesTextFormfieldState extends State<FocusNotesTextFormfield> {
                     });
                   },
                   icon: isShownPassword
-                      ? Icon(Icons.visibility)
-                      : Icon(Icons.visibility_off),
+                      ? Icon(
+                          Icons.visibility,
+                          color: Theme.of(context).colorScheme.primary,
+                        )
+                      : Icon(
+                          Icons.visibility_off,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
                 )
               : null,
         ),
