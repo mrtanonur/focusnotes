@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:focusnotes/extensions/theme_extension.dart';
+import 'package:focusnotes/l10n/app_localizations.dart';
 import 'package:focusnotes/providers/main_provider.dart';
 import 'package:focusnotes/widgets/focusnotes_appbar.dart';
 import 'package:provider/provider.dart';
@@ -20,7 +22,7 @@ class _ThemePageState extends State<ThemePage> {
       appBar: FocusnotesAppBar(
         hasLeading: true,
         color: Theme.of(context).colorScheme.surfaceBright,
-        title: "Theme",
+        title: AppLocalizations.of(context)!.theme,
       ),
       body: SafeArea(
         child: Padding(
@@ -39,7 +41,7 @@ class _ThemePageState extends State<ThemePage> {
                       );
                     },
                   ),
-                  Text(ThemeMode.system.name),
+                  Text(ThemeMode.system.localizedText(context)),
                 ],
               ),
               Row(
@@ -52,7 +54,7 @@ class _ThemePageState extends State<ThemePage> {
                       context.read<MainProvider>().changeTheme(ThemeMode.light);
                     },
                   ),
-                  Text(ThemeMode.light.name),
+                  Text(ThemeMode.light.localizedText(context)),
                 ],
               ),
               Row(
@@ -65,7 +67,7 @@ class _ThemePageState extends State<ThemePage> {
                       context.read<MainProvider>().changeTheme(ThemeMode.dark);
                     },
                   ),
-                  Text(ThemeMode.dark.name),
+                  Text(ThemeMode.dark.localizedText(context)),
                 ],
               ),
             ],

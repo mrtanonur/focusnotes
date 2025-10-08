@@ -6,6 +6,7 @@ import 'package:focusnotes/l10n/app_localizations.dart';
 import 'package:focusnotes/providers/note_provider.dart';
 import 'package:focusnotes/widgets/focusnotes_appbar.dart';
 import 'package:focusnotes/widgets/focusnotes_modal_bottom_sheet.dart';
+import 'package:focusnotes/widgets/focusnotes_note_tile.dart';
 import 'package:focusnotes/widgets/focusnotes_textformfield.dart';
 import 'package:provider/provider.dart';
 
@@ -28,6 +29,8 @@ class _NotePageState extends State<NotePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.surfaceBright,
+
       appBar: FocusnotesAppBar(
         color: Theme.of(context).colorScheme.surfaceBright,
         title: AppLocalizations.of(context)!.notes,
@@ -37,7 +40,7 @@ class _NotePageState extends State<NotePage> {
         onPressed: () {
           showModalBottomSheet(
             context: context,
-            isScrollControlled: true, // 👈 important
+            isScrollControlled: true,
             builder: (context) {
               return FocusNotesModalBottomSheet();
             },
@@ -49,15 +52,12 @@ class _NotePageState extends State<NotePage> {
         child: Consumer<NoteProvider>(
           builder: (context, provider, child) {
             if (provider.status == NoteStatus.empty) {
-              print("bbb");
               return Center(
                 child: Text(AppLocalizations.of(context)!.thereAreNoSavedNotes),
               );
             } else if (provider.status == NoteStatus.loaded) {
-              print("iniytyy");
               return ListView.separated(
                 itemBuilder: (context, index) {
-                  print("eee");
                   return NoteTile(index: index);
                 },
                 separatorBuilder: (context, index) {
@@ -70,35 +70,6 @@ class _NotePageState extends State<NotePage> {
             }
           },
         ),
-      ),
-    );
-  }
-}
-
-class NoteTile extends StatefulWidget {
-  final int index;
-  const NoteTile({super.key, required this.index});
-
-  @override
-  State<NoteTile> createState() => _NoteTileState();
-}
-
-class _NoteTileState extends State<NoteTile> {
-  @override
-  Widget build(BuildContext context) {
-    NoteProvider provider = context.read<NoteProvider>();
-    return ListTile(
-      onTap: () {
-        provider.changeIndex(widget.index);
-        alertPopUp(context, UpdatePopUp());
-      },
-      title: Text(provider.notes[widget.index]!.title),
-      subtitle: Text(provider.notes[widget.index]!.content),
-      trailing: IconButton(
-        onPressed: () {
-          alertPopUp(context, DeleteConfirmationPopUp(index: widget.index));
-        },
-        icon: Icon(Icons.cancel),
       ),
     );
   }
@@ -138,6 +109,7 @@ class DeleteConfirmationPopUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(AppLocalizations.of(context)!.areYouSure),
         Row(

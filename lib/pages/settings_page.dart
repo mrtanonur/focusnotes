@@ -81,7 +81,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   await context.read<AuthProvider>().signOut();
                   context.read<MainProvider>().resetNavigationIndex();
                 },
-                text: "Sign Out",
+                text: AppLocalizations.of(context)!.signOut,
               ),
             ),
           ],
