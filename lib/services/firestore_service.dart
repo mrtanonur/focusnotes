@@ -13,10 +13,10 @@ class FirestoreService {
 
   Future<Either<String, void>> storeUserData(UserModel userModel) async {
     try {
-      String id = _firebaseAuth.currentUser!.uid;
+      // String id = _firebaseAuth.currentUser!.uid;
       await _firestoreService
           .collection(_userCollectionName)
-          .doc(id)
+          .doc(userModel.id)
           .set(userModel.toJson());
       return Right(null);
     } on FirebaseException catch (exception) {
@@ -31,9 +31,7 @@ class FirestoreService {
           .collection(_userCollectionName)
           .doc(id)
           .get();
-      print(response.data());
       final UserModel userModel = UserModel.fromJson(response.data()!);
-      print(userModel.email);
       return Right(userModel);
     } on FirebaseException catch (exception) {
       return Left(exception.message!);

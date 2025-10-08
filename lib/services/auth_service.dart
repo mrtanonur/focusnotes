@@ -28,7 +28,6 @@ class AuthService {
 
       return Right(userCredential);
     } on FirebaseAuthException catch (exception) {
-      print(exception);
       return Left(exception.message!);
     }
   }
@@ -46,10 +45,8 @@ class AuthService {
     try {
       final UserCredential userCredential = await _firebaseAuth
           .signInWithEmailAndPassword(email: email, password: password);
-      print(userCredential.user);
       return Right(userCredential.user!);
     } on FirebaseAuthException catch (exception) {
-      print(exception.message);
       return Left(exception.message!);
     }
   }
@@ -60,11 +57,8 @@ class AuthService {
       final GoogleSignIn googleSignIn = GoogleSignIn.instance;
       await googleSignIn.initialize();
 
-      print(googleSignIn);
-
       final GoogleSignInAccount? googleUser = await googleSignIn
           .attemptLightweightAuthentication();
-      print(googleUser);
 
       googleUser ?? await googleSignIn.authenticate();
 
@@ -99,7 +93,6 @@ class AuthService {
       );
       return Right(userCredential.user);
     } on FirebaseAuthException catch (exception) {
-      print(exception.message);
       return Left(exception.message!);
     }
   }
