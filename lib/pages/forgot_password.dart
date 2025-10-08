@@ -50,7 +50,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
     return Scaffold(
       appBar: FocusnotesAppBar(
         color: Theme.of(context).colorScheme.surfaceBright,
-        title: "Reset Password",
+        title: AppLocalizations.of(context)!.resetPassword,
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,

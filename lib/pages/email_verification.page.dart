@@ -28,7 +28,7 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset("assets/images/focusnotes_transparent.png"),
+            Image.asset(AssetConstants.focusnotesTransparent),
             Text(
               AppLocalizations.of(context)!.weHaveSentAnEmailForVerification,
               textAlign: TextAlign.center,
@@ -48,7 +48,7 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
                     await context.read<AuthProvider>().sendEmailVerification();
                   },
                   child: Text(
-                    "Send again",
+                    AppLocalizations.of(context)!.sendAgain,
                     style: TextStyle(
                       color: Theme.of(context).colorScheme.primary,
                     ),
@@ -56,7 +56,7 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
                 ),
               ],
             ),
-            SizedBox(height: 96),
+            SizedBox(height: SizeConstants.s96),
             FocusNotesButton(
               onTap: () {
                 Navigator.pushReplacement(

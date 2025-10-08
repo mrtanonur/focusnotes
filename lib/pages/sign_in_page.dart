@@ -124,8 +124,9 @@ class _SignInFormState extends State<SignInForm> {
         children: [
           FocusNotesTextFormfield(
             validator: (value) {
-              if (value == null || value.isEmpty)
+              if (value == null || value.isEmpty) {
                 return AppLocalizations.of(context)!.enterYourEmail;
+              }
               return null;
             },
             controller: _emailController,
@@ -134,8 +135,9 @@ class _SignInFormState extends State<SignInForm> {
           FocusNotesTextFormfield(
             obscureText: true,
             validator: (value) {
-              if (value == null || value.isEmpty)
+              if (value == null || value.isEmpty) {
                 return AppLocalizations.of(context)!.enterYourPassword;
+              }
               return null;
             },
             controller: _passwordController,

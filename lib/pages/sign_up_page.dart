@@ -154,7 +154,6 @@ class _SignUpFormState extends State<SignUpForm> {
           FocusNotesButton(
             isLoading: isLoading,
             onTap: () async {
-              print(_emailController.text);
               if (_globalKey.currentState!.validate()) {
                 if (_confirmPasswordController.text ==
                     _passwordController.text) {
@@ -200,9 +199,9 @@ class _GoogleAppleSignInState extends State<GoogleAppleSignIn> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Image.asset("assets/images/apple_logo.png", height: 50),
+        Image.asset(AssetConstants.appleLogo, height: 50),
         SizedBox(width: SizeConstants.s48),
-        Image.asset("assets/images/google_logo.png", height: 54),
+        Image.asset(AssetConstants.googleLogo, height: 54),
       ],
     );
   }
