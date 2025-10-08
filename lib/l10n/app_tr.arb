@@ -41,6 +41,11 @@
   "enterANote": "Bir not girin",
   "yes": "yevetes",
   "no": "hayır",
-  "areYouSure": "Are you sure?"
-
+  "areYouSure": "Are you sure?",
+  "sendAgain": "Tekrar gönder",
+  "resetPassword": "Şifreyi Sıfırla",
+  "signOut": "Çıkış yap",
+  "dark": "Koyu",
+  "light": "Açık",
+  "system": "Sistem"
 }

@@ -138,4 +138,22 @@ class AppLocalizationsTr extends AppLocalizations {
 
   @override
   String get areYouSure => 'Are you sure?';
+
+  @override
+  String get sendAgain => 'Tekrar gönder';
+
+  @override
+  String get resetPassword => 'Şifreyi Sıfırla';
+
+  @override
+  String get signOut => 'Çıkış yap';
+
+  @override
+  String get dark => 'Koyu';
+
+  @override
+  String get light => 'Açık';
+
+  @override
+  String get system => 'Sistem';
 }

@@ -138,4 +138,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get areYouSure => 'Are you sure?';
+
+  @override
+  String get sendAgain => 'Send again';
+
+  @override
+  String get resetPassword => 'Reset Password';
+
+  @override
+  String get signOut => 'Sign out';
+
+  @override
+  String get dark => 'Dark';
+
+  @override
+  String get light => 'Light';
+
+  @override
+  String get system => 'System';
 }

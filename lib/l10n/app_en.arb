@@ -42,5 +42,11 @@
     "enterANote": "Enter a note",
     "yes": "yes",
     "no": "no",
-    "areYouSure": "Are you sure?"
+    "areYouSure": "Are you sure?",
+    "sendAgain": "Send again",
+    "resetPassword": "Reset Password",
+    "signOut": "Sign out",
+    "dark": "Dark",
+    "light": "Light",
+    "system": "System"
 }
