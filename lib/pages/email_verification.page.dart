@@ -59,9 +59,10 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
             SizedBox(height: SizeConstants.s96),
             FocusNotesButton(
               onTap: () {
-                Navigator.pushReplacement(
+                Navigator.pushAndRemoveUntil(
                   context,
                   MaterialPageRoute(builder: (context) => SignInPage()),
+                  (route) => false,
                 );
               },
               text: AppLocalizations.of(context)!.goToSignInPage,

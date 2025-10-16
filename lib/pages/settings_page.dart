@@ -37,9 +37,10 @@ class _SettingsPageState extends State<SettingsPage> {
   void authListener() {
     final status = context.read<AuthProvider>().status;
     if (status == AuthStatus.signOut) {
-      Navigator.pushReplacement(
+      Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (context) => SignInPage()),
+        (route) => false,
       );
     }
   }

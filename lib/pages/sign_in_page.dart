@@ -37,9 +37,10 @@ class _SignInPageState extends State<SignInPage> {
 
     if (status == AuthStatus.signIn) {
       _provider!.getUserData();
-      Navigator.pushReplacement(
+      Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (context) => HomePage()),
+        (route) => false,
       );
     } else if (status == AuthStatus.unVerified) {
       ScaffoldMessenger.of(context).showSnackBar(

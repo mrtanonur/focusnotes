@@ -35,9 +35,10 @@ class _SignUpPageState extends State<SignUpPage> {
     AuthStatus status = _provider!.status;
     if (status == AuthStatus.verificationProcess) {
       _provider!.storeUserData();
-      Navigator.pushReplacement(
+      Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (context) => EmailVerificationPage()),
+        (route) => false,
       );
     } else if (status == AuthStatus.failure) {
       ScaffoldMessenger.of(context).showSnackBar(
